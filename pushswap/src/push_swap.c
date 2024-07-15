@@ -37,9 +37,6 @@ void	order_rather_index(t_src *src)
 
 int succes_args(char ch1, char ch2, char ch3)
 {
-	//ch1 ___ bf 
-	//af______ch3
-	//cur_____ch2
 	if ((ch1 >= '0' && ch1 <= '9') && (ch2 == '-' || ch2 == '+'))
                 return (0);
         else if ((ch2 == '-' || ch2 == '+') && (ch3 >= '0' && ch3 <= '9'))
