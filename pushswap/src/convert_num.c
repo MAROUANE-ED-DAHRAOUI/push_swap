@@ -29,21 +29,21 @@ int     ft_itoa_num(char *str, t_src *src)
         return ((int)(num * sign));
 }
 
-void    convert_numbers(t_src *nah)
+void    convert_numbers(t_src *src)
 {
         int     i;
 	int	j;
-	char	**src;
+	char	**arr;
 
-	src = ft_split(nah->add_args, ' ');
+	arr = ft_split(src->add_args, ' ');
 	j = 0;
         i = 0;
-        while(src[i] && src[i][0] != '\0')
+        while(arr[i] && arr[i][0] != '\0')
         {
-		nah->stack_a[i] = ft_itoa_num(src[i], nah);
+		src->stack_a[i] = ft_itoa_num(arr[i], src);
 		i++;
         }
-	while(src[j] != NULL)
-		free(src[j++]);
-	free(src);
+	while(arr[j] != NULL)
+		free(arr[j++]);
+	free(arr);
 }

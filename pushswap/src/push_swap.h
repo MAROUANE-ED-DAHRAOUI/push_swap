@@ -14,6 +14,7 @@ typedef struct s_src
         char            *add_args;
         int             size_a;
         int             size_b;
+	int		nega;
 
 }       t_src;
 

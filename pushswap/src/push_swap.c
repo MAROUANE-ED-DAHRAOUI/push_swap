@@ -35,29 +35,54 @@ void	order_rather_index(t_src *src)
 	}
 }
 
+int succes_args(char ch1, char ch2, char ch3)
+{
+	//ch1 ___ bf 
+	//af______ch3
+	//cur_____ch2
+	if ((ch1 >= '0' && ch1 <= '9') && (ch2 == '-' || ch2 == '+'))
+                return (0);
+        else if ((ch2 == '-' || ch2 == '+') && (ch3 >= '0' && ch3 <= '9'))
+			return (1);
+        else if ((ch2 == '-' || ch2 == '+') && (ch3 != '-' || ch3 != '+'))
+                return (0);
+        else if ((ch2 == '-' || ch2 == '+') && (ch3 == ' ' || ch3 == '\0'))
+                return (0);
+        else if (ch2 == ' ' || ch2 == '+' || ch2 == '-')
+                return (1);
+        else if (ch2 >= '0' && ch2 <= '9')
+                	return (1);
+        else
+		return (0);
+}
+
+int	process_str(char *str)
+{
+	int i;
+
+	i = 0;
+	while(str[i] == ' ')
+		i++;
+	if(str[i] == '\0')
+		return (0);
+	while(str[i] != '\0')
+	{
+		if(!(succes_args(str[i - 1], str[i], str[i + 1])))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int Is_valide_input(char **av, int ac)
 {
     int i;
-    int j;
 
     i = 0;
     while(++i < ac)
     {
-	    j = 0;
-	    if (!av[i][0] || (av[i][0] && av[i][0] == ' '))
-		    return (0);
-	     while(av[i][j] != '\0')
-	     {
-		     if((!(av[i][j] >= '0' && av[i][j] <= '9') && (av[i][j] != ' ')
-					     && (av[i][j] != '+' && av[i][j] != '-' && av[i][j] != ' ')) ||
-				     (av[i][j] == '-' && av[i][j + 1] == '\0') || 
-				     (av[i][j] == '+' && av[i][j + 1] == '\0') ||
-				     (av[i][j] == '-' && av[i][j + 1] == ' ') ||
-				     (av[i][j] == '+' && av[i][j + 1] == ' '))
-			     return (0);
-		     else
-			     j++;
-	     }
+	if(!(process_str(av[i])))
+		return (0);
     }
     return (1);
 }
@@ -73,6 +98,8 @@ int main(int ac, char **av)
 	if(!(Is_valide_input(av, ac)))
 		free_err(src, "Is Not valide input\n");
 	stacks_init(ac, av, src);
+	if(src->size_a == 1)
+		exit(1);
 	ft_args_join(av, ac, src);
 	convert_numbers(src);
 	check_dup(src);
