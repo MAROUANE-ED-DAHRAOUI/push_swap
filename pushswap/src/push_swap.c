@@ -102,6 +102,6 @@ int main(int ac, char **av)
 	check_dup(src);
 	order_rather_index(src);
 	check_action(src);
-	Is_sorted_stack(src);
+	//free_all(src);
 	return (0);
 }
