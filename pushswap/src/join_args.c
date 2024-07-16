@@ -27,3 +27,34 @@ void	ft_args_join(char **av, int ac, t_src *src)
 	if(cp1)
 		free(cp1);
 }
+
+int	ft_min_num(t_src *src)
+{
+	int	min;
+	int	i;
+
+	i = 0;
+	min = src->stack_a[0];
+	while(src->stack_a[i])
+	{
+		if(src->stack_a[i] < min)
+			min = src->stack_a[i];
+		i++;
+	}
+	return (min);
+}
+
+int	min_num_pos(t_src *src, int size)
+{
+	int	i;
+
+	i = 0;
+	while(src->stack_a[i] && size >= 0)
+	{
+		if(src->stack_a[i] == ft_min_num(src))
+			return (1);
+		size--;
+		i++;
+	}
+	return (0);
+}

@@ -34,7 +34,7 @@ void    sort_elements_stk_b(int len_bit, int pos, t_src *src, int size_b)
         while (!Is_sorted_stack(src) && size_b-- && pos <= len_bit)
         {
                 if(((src->stack_b[0] >> size_b) & 1) == 0)
-                        rotate(src->stack_b, src->size_b, "up", "b");
+                        ra(src->stack_b, src->size_b, "up", "b");
                 else
                         push("pa\n", src);
         }
@@ -65,7 +65,7 @@ void    sorting_radix(t_src *src)
                         if (((src->stack_a[0] >> j) & 1) == 0)
                                 push("pb\n", src);
                         else
-                                rotate(src->stack_a, src->size_a, "up", "a");
+                                ra(src->stack_a, src->size_a, "up", "a");
                 }
                 sort_elements_stk_b(len_bits, j + 1, src, src->size_b);
 		j++;

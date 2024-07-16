@@ -12,6 +12,7 @@ SRC = \
 	src/utils.c\
 	src/utils1.c\
 	src/join_args.c\
+	src/moves.c\
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
