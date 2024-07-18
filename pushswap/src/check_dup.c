@@ -35,32 +35,3 @@ void    check_dup(t_src *src)
         if(Is_sorted_stack(src))
                 free_err(src, NULL);
 }
-
-/*void    process_args(int ac, char **av, t_src *src)
-{
-        int     i;
-        char    *s1;
-        char    *s2;
-
-        s1 = ft_strdup("");
-        i = 1;
-        while(i < ac && av[i] != NULL)
-        {
-                s2 = ft_strjoin(s1, av[i]);
-                if(s1)
-                        free(s1);
-                if(i != ac - 1)
-                {
-                        s1 = ft_strjoin(s2, " ");
-                        if(s2)
-                                free(s2);
-                        s2 = s1;
-                }
-		i++;
-        }
-        src->add_args = ft_strdup(s2);
-        if(src->add_args == NULL)
-                free_err(src, "Error\n");
-        if(s2)
-                free(s2);
-}*/

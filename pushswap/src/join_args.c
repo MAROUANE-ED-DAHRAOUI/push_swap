@@ -23,7 +23,7 @@ void	ft_args_join(char **av, int ac, t_src *src)
 	}
 	src->add_args = ft_strdup(cp1);
 	if(src->add_args == NULL)
-		free_err(src, "Error in join args\n");
+		free_err(src, "Error\n");
 	if(cp1)
 		free(cp1);
 }

@@ -29,47 +29,94 @@ void    push(char *ptr, t_src *src)
         write(1, ptr, ft_strlen(ptr));
 }
 
-void    sort_elements_stk_b(int len_bit, int pos, t_src *src, int size_b)
+int index_number(t_src *src)
 {
-        while (!Is_sorted_stack(src) && size_b-- && pos <= len_bit)
+        int     max;
+        int i;
+
+        i = 0;
+        max = ft_max_num(src);
+        while(i < src->size_b)
         {
-                if(((src->stack_b[0] >> size_b) & 1) == 0)
-                        ra(src->stack_b, src->size_b, "up", "b");
-                else
-                        push("pa\n", src);
+                if(src->stack_b[i] == max)
+                        return (i);
+                i++;
         }
-        if(Is_sorted_stack(src))
-        {
-                while(src->size_b != 0)
-                        push("pa\n", src);
-        }
+        return (0);
 }
 
-void    sorting_radix(t_src *src)
+int	ft_max_num(t_src *src)
 {
-        int     j;
-        int     len_bits;
-        int     len;
+	int	max;
+	int	i;
 
-        j = 0;
-        len = src->size_a;
-        len_bits = 0;
-        while(len > 1 && ++len_bits)
-                len /= 2;
+	i = 0;
+	max = src->stack_a[0];
+	while(src->stack_a[i])
+	{
+		if(src->stack_a[i] > max)
+			max = src->stack_a[i];
+		i++;
+	}
+	return (max);
+}
 
-        while(j <= len_bits)
+void    range_In_order(t_src *src)
+{
+        int i = 0;
+        int indx;
+
+        while(src->stack_b[i])
         {
-                len = src->size_a;
-                while(!Is_sorted_stack(src) && len--)
+                indx = index_number(src);
+                if(indx < (src->size_b / 2))
                 {
-                        if (((src->stack_a[0] >> j) & 1) == 0)
-                                push("pb\n", src);
-                        else
-                                ra(src->stack_a, src->size_a, "up", "a");
+                        while(indx > 0)
+                        {
+                                 rab(src->stack_b, src->size_b, "b");
+                                 indx--;
+                        }
                 }
-                sort_elements_stk_b(len_bits, j + 1, src, src->size_b);
-		j++;
+                else
+                {
+                        while((src->size_b - indx) != 0)
+                        {
+                                rrab(src->stack_a, src->size_a,  "b");
+                                indx++;
+                        }
+                }
         }
-        while(src->size_b != 0)
-                push("pa\n", src);
+      push("pa\n", src);
 }
+void    range(t_src *src, int end)
+{
+        int start;
+
+        start = 0; 
+
+        while(src->size_a > 0)
+        {
+                if(src->stack_a[0] >= start && src->stack_a[0] <= end)
+                {
+                        push("pb\n", src);
+                        start++;
+                        end++;
+                }
+                else if(src->stack_a[0] < start)
+                {
+                        push("pb\n", src);
+                        rab(src->stack_b, src->size_b, "b");
+                        start++;
+                        end++;
+                }
+                else
+                {
+                        rab(src->stack_b, src->size_b, "a");
+                }
+        }  
+        while(src->size_b > 0)
+        {
+                range_In_order(src);
+        }
+}
+
