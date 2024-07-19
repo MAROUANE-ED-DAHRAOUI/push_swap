@@ -4,8 +4,8 @@ void	rab(int *arr, int size, char *s2)
 {
 	int tmp;
 
-	if(!arr[0] || !arr[1])
-		return ;
+	if (size <= 1)  
+        return;
 	
 	tmp = arr[0];
 	ft_memmove(arr, arr + 1, sizeof(int) * (size - 1));

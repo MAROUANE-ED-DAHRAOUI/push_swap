@@ -25,7 +25,7 @@ void	five_or_four_sorting(t_src *src)
 		if(src->stack_a[0] == ft_min(src, size))
 		{
 			push("pb\n", src);
-			size--;
+			--size;
 		}
 		else
 			rab(src->stack_a, src->size_a, "a");
@@ -35,8 +35,6 @@ void	five_or_four_sorting(t_src *src)
     {
         push("pa\n", src);
     }
-	// push("pa\n", src);
-	// push("pa\n", src);
 }
 
 void	three_sorting(t_src *src)
