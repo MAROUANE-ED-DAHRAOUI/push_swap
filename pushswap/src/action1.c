@@ -29,94 +29,80 @@ void    push(char *ptr, t_src *src)
         write(1, ptr, ft_strlen(ptr));
 }
 
-int index_number(t_src *src)
-{
-        int     max;
-        int i;
-
-        i = 0;
-        max = ft_max_num(src);
-        while(i < src->size_b)
-        {
-                if(src->stack_b[i] == max)
-                        return (i);
-                i++;
-        }
-        return (0);
-}
-
-int	ft_max_num(t_src *src)
+int	ft_max_num(t_src *src )
 {
 	int	max;
 	int	i;
+	int	j;
 
 	i = 0;
-	max = src->stack_a[0];
-	while(src->stack_a[i])
+	j = 0;
+	max = src->indx[0];
+	while(src->indx && i < src->size_a)
 	{
 		if(src->stack_a[i] > max)
+                {
 			max = src->stack_a[i];
+                }
 		i++;
 	}
+        printf("------%d-----", max);
 	return (max);
 }
 
-void    range_In_order(t_src *src)
-{
-        int i = 0;
-        int indx;
-
-        while(src->stack_b[i])
-        {
-                indx = index_number(src);
-                if(indx < (src->size_b / 2))
-                {
-                        while(indx > 0)
-                        {
-                                 rab(src->stack_b, src->size_b, "b");
-                                 indx--;
-                        }
-                }
-                else
-                {
-                        while((src->size_b - indx) != 0)
-                        {
-                                rrab(src->stack_a, src->size_a,  "b");
-                                indx++;
-                        }
-                }
-        }
-      push("pa\n", src);
-}
 void    range(t_src *src, int end)
 {
         int start;
 
         start = 0; 
-
-        while(src->size_a > 0)
+        int size = src->size_a;
+        while(size != 1)
         {
-                if(src->stack_a[0] >= start && src->stack_a[0] <= end)
+                if(src->indx[0] >= start && src->indx[0] <= end)
                 {
                         push("pb\n", src);
+                        size--;
                         start++;
                         end++;
                 }
-                else if(src->stack_a[0] < start)
+                else if(src->indx[0] < start)
                 {
                         push("pb\n", src);
                         rab(src->stack_b, src->size_b, "b");
+                        size--;
                         start++;
                         end++;
                 }
-                else
+                else if(src->indx[0] > end)
                 {
-                        rab(src->stack_b, src->size_b, "a");
+                        rab(src->stack_a, src->size_a, "a");
                 }
         }  
-        while(src->size_b > 0)
+
+        size = src->size_b;
+        int max = 0;
+        while(size != 1)
         {
-                range_In_order(src);
+
+                max = ft_max_num(src);
+                if(max < (src->size_b / 2))
+                {
+                        while(max-- >= 0)
+                        {
+                                rab(src->stack_b, src->size_b, "b");
+                                push("pa\n", src);
+                                size--;
+                        }
+                }else if(max > (src->size_b / 2))
+                {
+                        max -= (src->size_b / 2);
+                        while(max-- >= 0)
+                        {
+                                rrab(src->stack_b, src->size_b, "b");
+                                push("pa\n", src);
+                                size--;
+                        }
+                }
         }
 }
 

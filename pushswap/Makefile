@@ -15,7 +15,7 @@ SRC = \
 	src/moves.c\
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 AR = ar rcs
 
 OBJ = $(SRC:.c=.o)

@@ -19,6 +19,8 @@ void	rrab(int *arr, int size, char *s2)
 {
 	int tmp;
 
+	if(size == 0)
+		return ;
 	tmp = arr[size - 1];
 	ft_memmove(arr + 1, arr, sizeof(int) * (size - 1));
 	arr[0] = tmp;

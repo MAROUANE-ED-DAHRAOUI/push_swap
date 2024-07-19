@@ -11,10 +11,11 @@ typedef struct s_src
 {
 	int		*stack_a;
 	int		*stack_b;
+        int             *indx;
         char            *add_args;
         int             size_a;
         int             size_b;
-	int		nega;
+        int             range;
 
 }       t_src;
 
@@ -54,4 +55,5 @@ char    	*ft_substr(char const *s, unsigned int start, size_t len);
 char    	**ft_split(char const *s, char c);
 int      	len_word(char const *s, char c, int i);
 void    	free_err(t_src *src, char *str);
+int             if_sorted(t_src *src);
 #endif

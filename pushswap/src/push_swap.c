@@ -1,33 +1,63 @@
 #include "push_swap.h"
 
+int		*bubble_sort(int *arr, int len)
+{
+	int i, j, swap;
+
+	i = -1;
+	while(++i < len)
+	{	
+			j = i + 1;
+			while(j < len)
+			{
+				if(arr[i] > arr[j])
+				{
+					swap = arr[i];
+					arr[i] = arr[j];
+					arr[j] = swap;
+				}
+				j++;
+			}
+	}
+	return (arr);
+}
+int		*assign_indx(int *org, int *cpy, int *indx, int size)
+{
+	int	i;
+	int j;
+
+	i = -1;
+	while(++i < size)
+	{
+		j = 0;
+		while(j < size)
+		{
+			if(org[i] == cpy[j])
+				indx[i] = j;
+			j++;
+		}
+	}
+	return (indx);
+}
 void	order_rather_index(t_src *src)
 {
 	int	i;
-	int	j;
-	int	k;
-	int	*buff;
+	int	*indx;
+	int *tmp;
 
-	i = 0;
-	buff = malloc(src->size_a * sizeof * buff);
-	if(buff)
+	i = -1;
+	indx = malloc(src->size_a * sizeof * indx);
+	tmp = malloc(src->size_a * sizeof * tmp);
+	if(indx && tmp)
 	{
-		while(i < src->size_a)
+		while(src->size_a > ++i)
 		{
-			k = 0;
-			j = 0;
-			while(j++ < src->size_a)
-			{
-				if(src->stack_a[i] > src->stack_a[j])
-					k++;
-			}
-			buff[i] = k;
-			i++;
+			tmp[i] = src->stack_a[i];
 		}
-		i = src->size_a;
-		while(i--)
-			src->stack_a[i] = buff[i];
-
-		free(buff);
+		tmp = bubble_sort(tmp, src->size_a);
+		indx = assign_indx(src->stack_a, tmp, indx, src->size_a);
+		src->indx = indx;
+		free(tmp);
 	}
 	else
 	{
@@ -100,8 +130,24 @@ int main(int ac, char **av)
 	ft_args_join(av, ac, src);
 	convert_numbers(src);
 	check_dup(src);
+	int i = 0;
 	order_rather_index(src);
-	check_action(src);
+	if (!if_sorted(src))
+		check_action(src);
+	printf("stack A\n");
+	while (i < 5)
+	{
+		printf("[%d]\n", src->stack_a[i]);
+		i++;
+	}
+	// printf("stack B\n");
+	// i = 0;
+	// while (i < 2)
+	// {
+	// 	printf("[%d]\n", src->stack_b[i]);
+	// 	i++;
+	// }
 	//free_all(src);
 	return (0);
 }
+      
