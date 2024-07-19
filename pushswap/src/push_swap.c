@@ -21,43 +21,22 @@ int		*bubble_sort(int *arr, int len)
 	}
 	return (arr);
 }
-int		*assign_indx(int *org, int *cpy, int *indx, int size)
-{
-	int	i;
-	int j;
 
-	i = -1;
-	while(++i < size)
-	{
-		j = 0;
-		while(j < size)
-		{
-			if(org[i] == cpy[j])
-				indx[i] = j;
-			j++;
-		}
-	}
-	return (indx);
-}
 void	order_rather_index(t_src *src)
 {
 	int	i;
 	int	*indx;
-	int *tmp;
 
 	i = -1;
 	indx = malloc(src->size_a * sizeof * indx);
-	tmp = malloc(src->size_a * sizeof * tmp);
-	if(indx && tmp)
+	if(indx)
 	{
-		while(src->size_a > ++i)
+		while(++i < src->size_a)
 		{
-			tmp[i] = src->stack_a[i];
+			src->indx[i] = src->stack_a[i];
 		}
-		tmp = bubble_sort(tmp, src->size_a);
-		indx = assign_indx(src->stack_a, tmp, indx, src->size_a);
-		src->indx = indx;
-		free(tmp);
+		src->indx = bubble_sort(src->indx, src->size_a);
+
 	}
 	else
 	{

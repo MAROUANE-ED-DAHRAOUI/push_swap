@@ -18,6 +18,12 @@ typedef struct s_src
         int             range;
 
 }       t_src;
+typedef struct s_src1
+{
+	int                content;
+        int                index;
+        struct s_src1      *next;
+}       t_src1;
 
 int		Is_valide_input(char **av, int ac);
 int		process_str(char *str);

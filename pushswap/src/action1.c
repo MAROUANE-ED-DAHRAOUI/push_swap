@@ -37,12 +37,12 @@ int	ft_max_num(t_src *src )
 
 	i = 0;
 	j = 0;
-	max = src->indx[0];
-	while(src->indx && i < src->size_a)
+	max = src->stack_a[0];
+	while(i < src->size_b)
 	{
-		if(src->stack_a[i] > max)
+		if(src->stack_b[i] > max)
                 {
-			max = src->stack_a[i];
+			max = src->stack_b[i];
                 }
 		i++;
 	}
@@ -50,59 +50,72 @@ int	ft_max_num(t_src *src )
 	return (max);
 }
 
+int get_index(int *idx, int nbr, int size)
+{
+        int i;
+
+        i = 0;
+        while(i < size)
+        {
+                if(nbr == idx[i])
+                        return i;
+                i++;
+        }
+        return (0);
+}
+
 void    range(t_src *src, int end)
 {
         int start;
+        int index = 0;
 
         start = 0; 
-        int size = src->size_a;
-        while(size != 1)
+        while(src->size_a != 0)
         {
-                if(src->indx[0] >= start && src->indx[0] <= end)
+                index = get_index(src->indx, src->stack_a[0], src->size_a);
+                if(index >= start && index <= end)
                 {
                         push("pb\n", src);
-                        size--;
                         start++;
                         end++;
                 }
-                else if(src->indx[0] < start)
+                else if(index < start)
                 {
                         push("pb\n", src);
                         rab(src->stack_b, src->size_b, "b");
-                        size--;
                         start++;
                         end++;
                 }
-                else if(src->indx[0] > end)
+                else if(index > end)
                 {
                         rab(src->stack_a, src->size_a, "a");
                 }
         }  
+        // size = src->size_b;
+        // int max = 0;
+        // while(size != 1)
+        // {
 
-        size = src->size_b;
-        int max = 0;
-        while(size != 1)
-        {
-
-                max = ft_max_num(src);
-                if(max < (src->size_b / 2))
-                {
-                        while(max-- >= 0)
-                        {
-                                rab(src->stack_b, src->size_b, "b");
-                                push("pa\n", src);
-                                size--;
-                        }
-                }else if(max > (src->size_b / 2))
-                {
-                        max -= (src->size_b / 2);
-                        while(max-- >= 0)
-                        {
-                                rrab(src->stack_b, src->size_b, "b");
-                                push("pa\n", src);
-                                size--;
-                        }
-                }
-        }
+        //         max = ft_max_num(src);
+        //         if(max < (src->size_b / 2))
+        //         {
+        //                 while(max-- >= 0)
+        //                 {
+        //                         rab(src->stack_b, src->size_b, "b");
+        //                         push("pa\n", src);
+        //                         size--;
+        //                 }
+        //         }
+        //         else if(max > (src->size_b / 2))
+        //         {
+        //                 max -= (src->size_b / 2);
+        //                 while(max-- >= 0)
+        //                 {
+        //                         rrab(src->stack_b, src->size_b, "b");
+        //                         push("pa\n", src);
+        //                         size--;
+        //                 }
+        //         }
+        // }
 }
 
