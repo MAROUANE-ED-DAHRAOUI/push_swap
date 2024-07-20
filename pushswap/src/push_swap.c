@@ -25,23 +25,23 @@ int		*bubble_sort(int *arr, int len)
 void	order_rather_index(t_src *src)
 {
 	int	i;
-	int	*indx;
+	// int	*indx;
 
 	i = -1;
-	indx = malloc(src->size_a * sizeof * indx);
-	if(indx)
-	{
-		while(++i < src->size_a)
-		{
-			src->indx[i] = src->stack_a[i];
-		}
-		src->indx = bubble_sort(src->indx, src->size_a);
-
-	}
-	else
+	// printf("size allocated");
+	src->indx = malloc(src->size_a * sizeof(int));
+	if(!src->indx)
 	{
 		free_err(src, "Error in order_rather\n");
+		return;
 	}
+	while(++i < src->size_a)
+	{
+
+		src->indx[i] = src->stack_a[i];
+
+	}
+	src->indx = bubble_sort(src->indx, src->size_a);
 }
 
 int succes_args(char ch1, char ch2, char ch3)
@@ -114,18 +114,11 @@ int main(int ac, char **av)
 	if (!if_sorted(src))
 		check_action(src);
 	printf("stack A\n");
-	while (i < 5)
+	while (i < src->size_a)
 	{
 		printf("[%d]\n", src->stack_a[i]);
 		i++;
 	}
-	// printf("stack B\n");
-	// i = 0;
-	// while (i < 2)
-	// {
-	// 	printf("[%d]\n", src->stack_b[i]);
-	// 	i++;
-	// }
 	//free_all(src);
 	return (0);
 }

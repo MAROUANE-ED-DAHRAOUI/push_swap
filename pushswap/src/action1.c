@@ -37,7 +37,9 @@ int	ft_max_num(t_src *src )
 
 	i = 0;
 	j = 0;
-	max = src->stack_a[0];
+	max = src->stack_b[0];
+        // printf("size b: %d\n", src->size_b);
+        // exit(0);
 	while(i < src->size_b)
 	{
 		if(src->stack_b[i] > max)
@@ -46,7 +48,7 @@ int	ft_max_num(t_src *src )
                 }
 		i++;
 	}
-        printf("------%d-----", max);
+        printf("------%d-----\n", max);
 	return (max);
 }
 
@@ -67,6 +69,7 @@ int get_index(int *idx, int nbr, int size)
 void    range(t_src *src, int end)
 {
         int start;
+        int    size;
         int index = 0;
 
         start = 0; 
@@ -91,31 +94,48 @@ void    range(t_src *src, int end)
                         rab(src->stack_a, src->size_a, "a");
                 }
         }  
-        // size = src->size_b;
-        // int max = 0;
-        // while(size != 1)
-        // {
+        printf("size a: %d --- size b: %d\n", src->size_a, src->size_b);
+        size = src->size_b;
+        int max = 0;
+        while(src->size_b != 0)
+        {
 
-        //         max = ft_max_num(src);
-        //         if(max < (src->size_b / 2))
-        //         {
-        //                 while(max-- >= 0)
-        //                 {
-        //                         rab(src->stack_b, src->size_b, "b");
-        //                         push("pa\n", src);
-        //                         size--;
-        //                 }
-        //         }
-        //         else if(max > (src->size_b / 2))
-        //         {
-        //                 max -= (src->size_b / 2);
-        //                 while(max-- >= 0)
-        //                 {
-        //                         rrab(src->stack_b, src->size_b, "b");
-        //                         push("pa\n", src);
-        //                         size--;
-        //                 }
-        //         }
-        // }
+                max = get_index(src->stack_b, ft_max_num(src), src->size_b);
+                // printf("b---> %d\n", src->size_b);
+
+                // exit(1);
+                // printf("max: %d -- size_b: %d\n", max, src->size_b / 2);
+                if(max <= (src->size_b / 2))
+                {
+                        while(max != 0)
+                        {
+                                rab(src->stack_b, src->size_b, "b");
+                                max--;
+                                size--;
+                        }
+                        printf("first : %d\n", src->stack_b[0]);
+                        // exit(1);
+                        push("pa\n", src);
+                }
+                else
+                {
+                        // max -= (src->size_b / 2);
+                        printf("max at else %d--- %d\n", max, src->size_b);
+                        // exit(1);
+                        while(src->size_b - max != 0)
+                        {
+                                rrab(src->stack_b, src->size_b, "b");
+                                // size--;
+                                max++;
+                        }
+                        printf("first : %d\n", src->stack_b[0]);
+                        push("pa\n", src);
+
+                }
+                // exit(0);
+
+        }
+        printf("b---> %d\n", src->size_b);
+
 }
 

@@ -15,7 +15,7 @@ SRC = \
 	src/moves.c\
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 AR = ar rcs
 
 OBJ = $(SRC:.c=.o)
