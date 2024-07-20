@@ -58,3 +58,18 @@ int	min_num_pos(t_src *src, int size)
 	}
 	return (0);
 }
+
+void	free_all(t_src *src)
+{
+	  if(src != NULL)
+        {
+                if(src->stack_a != NULL)
+                        free(src->stack_a);
+                if(src->stack_b != NULL)
+                        free(src->stack_b);
+                if(src->add_args != NULL)
+                        free(src->add_args);
+                if(src != NULL)
+                        free(src);
+        }
+}

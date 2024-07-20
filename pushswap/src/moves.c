@@ -41,3 +41,34 @@ void	swap(int *arr, int size)
 	arr[1] = cp;
 	write(1, "sa\n", 3);
 }
+
+ void	push_all_to_stack_a(t_src *src)
+ {
+	int	max;
+
+	 max = 0;
+	 while(src->size_b != 0)
+        {
+
+                max = get_index(src->stack_b, ft_max_num(src), src->size_b);
+                if(max <= (src->size_b / 2))
+                {
+                        while(max != 0)
+                        {
+                                rab(src->stack_b, src->size_b, "b");
+                                max--;
+                        }
+                        push("pa\n", src);
+                }
+                else
+                {
+                        while(src->size_b - max != 0)
+                        {
+                                rrab(src->stack_b, src->size_b, "b");
+                                max++;
+                        }
+                        push("pa\n", src);
+
+                }
+		}
+ }

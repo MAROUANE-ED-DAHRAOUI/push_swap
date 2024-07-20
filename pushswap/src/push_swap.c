@@ -25,14 +25,12 @@ int		*bubble_sort(int *arr, int len)
 void	order_rather_index(t_src *src)
 {
 	int	i;
-	// int	*indx;
 
 	i = -1;
-	// printf("size allocated");
 	src->indx = malloc(src->size_a * sizeof(int));
 	if(!src->indx)
 	{
-		free_err(src, "Error in order_rather\n");
+		free_err(src, "Error\n");
 		return;
 	}
 	while(++i < src->size_a)
@@ -92,9 +90,11 @@ int Is_valide_input(char **av, int ac)
     }
     return (1);
 }
+#include <stdio.h>
 int main(int ac, char **av)
 {
 	t_src	*src;
+	int i = 0;
 	
 	if(ac < 2)
                 return (0);
@@ -102,14 +102,13 @@ int main(int ac, char **av)
         if(src == NULL)
                 exit(1);
 	if(!(Is_valide_input(av, ac)))
-		free_err(src, "Is Not valide input\n");
+		free_err(src, "Error\n");
 	stacks_init(ac, av, src);
 	if(src->size_a == 1)
 		exit(1);
 	ft_args_join(av, ac, src);
 	convert_numbers(src);
 	check_dup(src);
-	int i = 0;
 	order_rather_index(src);
 	if (!if_sorted(src))
 		check_action(src);
@@ -119,7 +118,7 @@ int main(int ac, char **av)
 		printf("[%d]\n", src->stack_a[i]);
 		i++;
 	}
-	//free_all(src);
+	free_all(src);
 	return (0);
 }
       

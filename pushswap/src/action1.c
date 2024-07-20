@@ -48,7 +48,6 @@ int	ft_max_num(t_src *src )
                 }
 		i++;
 	}
-        printf("------%d-----\n", max);
 	return (max);
 }
 
@@ -69,9 +68,9 @@ int get_index(int *idx, int nbr, int size)
 void    range(t_src *src, int end)
 {
         int start;
-        int    size;
-        int index = 0;
+        int index;
 
+        index = 0;
         start = 0; 
         while(src->size_a != 0)
         {
@@ -90,52 +89,8 @@ void    range(t_src *src, int end)
                         end++;
                 }
                 else if(index > end)
-                {
                         rab(src->stack_a, src->size_a, "a");
-                }
-        }  
-        printf("size a: %d --- size b: %d\n", src->size_a, src->size_b);
-        size = src->size_b;
-        int max = 0;
-        while(src->size_b != 0)
-        {
-
-                max = get_index(src->stack_b, ft_max_num(src), src->size_b);
-                // printf("b---> %d\n", src->size_b);
-
-                // exit(1);
-                // printf("max: %d -- size_b: %d\n", max, src->size_b / 2);
-                if(max <= (src->size_b / 2))
-                {
-                        while(max != 0)
-                        {
-                                rab(src->stack_b, src->size_b, "b");
-                                max--;
-                                size--;
-                        }
-                        printf("first : %d\n", src->stack_b[0]);
-                        // exit(1);
-                        push("pa\n", src);
-                }
-                else
-                {
-                        // max -= (src->size_b / 2);
-                        printf("max at else %d--- %d\n", max, src->size_b);
-                        // exit(1);
-                        while(src->size_b - max != 0)
-                        {
-                                rrab(src->stack_b, src->size_b, "b");
-                                // size--;
-                                max++;
-                        }
-                        printf("first : %d\n", src->stack_b[0]);
-                        push("pa\n", src);
-
-                }
-                // exit(0);
-
         }
-        printf("b---> %d\n", src->size_b);
-
+        push_all_to_stack_a(src);
 }
 
