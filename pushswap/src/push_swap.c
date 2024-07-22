@@ -94,7 +94,7 @@ int Is_valide_input(char **av, int ac)
 int main(int ac, char **av)
 {
 	t_src	*src;
-	int i = 0;
+	//int i = 0;
 	
 	if(ac < 2)
                 return (0);
@@ -112,12 +112,12 @@ int main(int ac, char **av)
 	order_rather_index(src);
 	if (!if_sorted(src))
 		check_action(src);
-	printf("stack A\n");
+	/*printf("stack A\n");
 	while (i < src->size_a)
 	{
 		printf("[%d]\n", src->stack_a[i]);
 		i++;
-	}
+	}*/
 	free_all(src);
 	return (0);
 }

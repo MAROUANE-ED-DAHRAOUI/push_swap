@@ -5,12 +5,13 @@
 # include <string.h>
 # include <unistd.h>
 # include <limits.h>
-
+#include <stdio.h>
 typedef struct s_src
 {
 	int		*stack_a;
 	int		*stack_b;
         int             *indx;
+	int		indx_num;
         char            *add_args;
         int             size_a;
         int             size_b;
@@ -35,7 +36,7 @@ void            three_sorting(t_src *src);
 void            five_or_four_sorting(t_src *src);
 int             ft_min(t_src *src , int size);
 void            range(t_src *src, int end);
-int             get_index(int *idx, int nbr, int size);
+int             get_index(int *arr, int nbr, int size);
 int             ft_max_num(t_src *src );
 int             ft_min_num(t_src *src);
 int             min_num_pos(t_src *src, int size);
