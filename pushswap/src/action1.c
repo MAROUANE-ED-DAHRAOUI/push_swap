@@ -126,6 +126,5 @@ void    range(t_src *src, int end)
 		else
 			rab(src->stack_a, src->size_a, "a");
         }
-	free(src->indx);
         push_all_to_stack_a(src);
 }
