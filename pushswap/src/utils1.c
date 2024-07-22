@@ -84,16 +84,6 @@ void    free_err(t_src *src, char *str)
                 while(str[i])
                         write(1, &str[i++], 1);
         }
-        if(src != NULL)
-        {
-                if(src->stack_a != NULL)
-                        free(src->stack_a);
-                if(src->stack_b != NULL)
-                        free(src->stack_b);
-                if(src->add_args != NULL)
-                        free(src->add_args);
-                if(src != NULL)
-                        free(src);
-        }
+	free_all(src);
         exit(1);
 }
