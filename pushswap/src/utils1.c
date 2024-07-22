@@ -82,7 +82,7 @@ void    free_err(t_src *src, char *str)
         if(str)
         {
                 while(str[i])
-                        write(1, &str[i++], 1);
+                        write(2, &str[i++], 1);
         }
 	free_all(src);
         exit(1);
