@@ -84,38 +84,16 @@ int get_index(int *indx, int nbr, int size)
         }
         return (-1);
 }
-void	push_to_stack_b(t_src *src, int *start, int *end)
-{
 
-		if(src->indx_num >= *start && src->indx_num <= *end)
-                {
-                        push("pb\n", src);
-                        *start += 1;
-                        *end += 1;
-                }
-                else if(src->indx_num < *start)
-                {
-                        push("pb\n", src);
-                        rab(src->stack_b, src->size_b, "b");
-                        start++;
-                        end++;
-                }
-                else
-                       rab(src->stack_a, src->size_a, "a");
-}
 void    range(t_src *src, int end)
 {
-    //    int start;
 	int index;
 
-
-  //      start = 0; 
 	
 	int size = src->size_a;
         while(src->size_a)
         {	
                 index = get_index(src->indx, src->stack_a[0], size);
-                //push_to_stack_b(src, &start, &end);
 		if (index < src->size_b)
 			push("pb\n", src);
 		else if (index >= src->size_b && index <= src->size_b + end)

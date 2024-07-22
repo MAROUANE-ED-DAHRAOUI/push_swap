@@ -26,7 +26,7 @@ void            stacks_init(int ac, char **av, t_src *src);
 int             lenght_words(char const *av, char c);
 void            ft_args_join(char **av, int ac, t_src *src);
 void            convert_numbers(t_src *src);
-int             ft_itoa_num(char *str, t_src *src);
+long long       ft_itoa_num(char *str, t_src *src);
 void            check_dup(t_src *src);
 void            order_rather_index(t_src *src);
 int		*bubble_sort(int *arr, int len);

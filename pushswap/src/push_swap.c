@@ -112,7 +112,7 @@ int main(int ac, char **av)
 	if (!if_sorted(src))
 		check_action(src);
 	free_all(src);
-	system("leaks push_swap");
+	//system("leaks push_swap");
 	return (0);
 }
       
