@@ -90,7 +90,7 @@ int Is_valide_input(char **av, int ac)
     }
     return (1);
 }
-#include <stdio.h>
+
 int main(int ac, char **av)
 {
 	t_src	*src;
