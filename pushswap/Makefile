@@ -1,32 +1,17 @@
 NAME = push_swap
-
-HDER = src/push_swap.h
-
-SRC = \
-	src/action.c\
-	src/push_swap.c\
-	src/action1.c\
-	src/check_dup.c\
-	src/convert_num.c\
-	src/init_stack.c\
-	src/utils.c\
-	src/utils1.c\
-	src/join_args.c\
-	src/moves.c\
-
+HDER = push_swap.h
+SRC =  action.c push_swap.c action1.c check_dup.c convert_num.c init_stack.c utils.c utils1.c join_args.c moves.c
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
-
 OBJ = $(SRC:.c=.o)
 
+all: $(NAME) 
 
-all: $(NAME)
-
-$(NAME): $(OBJ) $(HDER)
+$(NAME):  $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) 
 
-%.o: %.c
+%.o: %.c $(HDER)
 	$(CC) $(CFLAGS) -Iinclude -c $< -o $@
 
 clean:
@@ -36,3 +21,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY:clean 
