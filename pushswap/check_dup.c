@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: med-dahr <med-dahr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 00:12:51 by med-dahr          #+#    #+#             */
-/*   Updated: 2024/07/23 01:03:29 by med-dahr         ###   ########.fr       */
+/*   Created: 2024/07/24 15:57:18 by med-dahr          #+#    #+#             */
+/*   Updated: 2024/07/24 15:57:20 by med-dahr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,31 @@ void	check_dup(t_src *src)
 	}
 }
 
-int	*bubble_sort(int *arr, int len)
+int	get_index(int *indx, int nbr, int size)
 {
 	int	i;
-	int	j;
-	int	swap;
 
-	i = -1;
-	while (++i < len)
+	i = 0;
+	while (i < size)
 	{
-		j = i + 1;
-		while (j < len)
+		if (indx[i] == nbr)
 		{
-			if (arr[i] > arr[j])
-			{
-				swap = arr[i];
-				arr[i] = arr[j];
-				arr[j] = swap;
-			}
-			j++;
+			return (i);
 		}
+		i++;
 	}
-	return (arr);
+	return (-1);
+}
+
+int	is_valide_input(char **av, int ac)
+{
+	int	i;
+
+	i = 0;
+	while (++i < ac)
+	{
+		if (!(process_str(av[i])))
+			return (0);
+	}
+	return (1);
 }

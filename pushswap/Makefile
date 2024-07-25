@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: med-dahr <med-dahr@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/07/24 15:56:55 by med-dahr          #+#    #+#              #
+#    Updated: 2024/07/24 15:56:59 by med-dahr         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
 HDER = push_swap.h
 SRC =  action.c push_swap.c action1.c check_dup.c convert_num.c init_stack.c utils.c utils1.c join_args.c moves.c

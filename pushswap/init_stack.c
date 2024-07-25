@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: med-dahr <med-dahr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 00:57:54 by med-dahr          #+#    #+#             */
-/*   Updated: 2024/07/23 00:58:51 by med-dahr         ###   ########.fr       */
+/*   Created: 2024/07/24 15:57:27 by med-dahr          #+#    #+#             */
+/*   Updated: 2024/07/24 15:57:31 by med-dahr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	stacks_init(int ac, char **av, t_src *src)
 		}
 		i++;
 	}
-	src->stack_a = malloc(src->size_a * sizeof * src->stack_a);
+	src->stack_a = malloc(src->size_a * sizeof (*src->stack_a));
 	if (src->stack_a == NULL)
 		free_err(src, "Error\n");
-	src->stack_b = malloc(src->size_a * sizeof * src->stack_b);
+	src->stack_b = malloc(src->size_a * sizeof (*src->stack_b));
 	if (src->stack_b == NULL)
 		free_err(src, "Error\n");
 }

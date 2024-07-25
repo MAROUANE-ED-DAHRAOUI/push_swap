@@ -5,12 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: med-dahr <med-dahr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 00:59:58 by med-dahr          #+#    #+#             */
-/*   Updated: 2024/07/23 01:11:09 by med-dahr         ###   ########.fr       */
+/*   Created: 2024/07/24 15:57:46 by med-dahr          #+#    #+#             */
+/*   Updated: 2024/07/24 15:57:48 by med-dahr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	*bubble_sort(int *arr, int len)
+{
+	int	i;
+	int	j;
+	int	swap;
+
+	i = -1;
+	while (++i < len)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (arr[i] > arr[j])
+			{
+				swap = arr[i];
+				arr[i] = arr[j];
+				arr[j] = swap;
+			}
+			j++;
+		}
+	}
+	return (arr);
+}
 
 void	order_rather_index(t_src *src)
 {
@@ -66,26 +90,13 @@ int	process_str(char *str)
 	return (1);
 }
 
-int	is_valide_input(char **av, int ac)
-{
-	int	i;
-
-	i = 0;
-	while (++i < ac)
-	{
-		if (!(process_str(av[i])))
-			return (0);
-	}
-	return (1);
-}
-#include <stdio.h>
 int	main(int ac, char **av)
 {
 	t_src	*src;
 
 	if (ac < 2)
 		return (0);
-	src = malloc(sizeof * src);
+	src = malloc(sizeof(*src));
 	if (src == NULL)
 		exit(1);
 	if (!(is_valide_input(av, ac)))
@@ -97,9 +108,6 @@ int	main(int ac, char **av)
 	order_rather_index(src);
 	if (!if_sorted(src))
 		check_action(src);
-	int i = 0;
-	while(i < src->size_a)
-		printf("[%d]\n", src->stack_a[i++]);
 	free_all(src);
 	return (0);
 }

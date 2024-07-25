@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: med-dahr <med-dahr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 00:59:40 by med-dahr          #+#    #+#             */
-/*   Updated: 2024/07/23 00:59:42 by med-dahr         ###   ########.fr       */
+/*   Created: 2024/07/24 15:57:40 by med-dahr          #+#    #+#             */
+/*   Updated: 2024/07/24 15:57:42 by med-dahr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	rab(int *arr, int size, char *s2)
 {
-	int	tmp;
 	int	i;
+	int	tmp;
 
 	if (size <= 1)
 		return ;
@@ -34,8 +34,8 @@ void	rab(int *arr, int size, char *s2)
 
 void	rrab(int *arr, int size, char *s2)
 {
-	int	tmp;
 	int	i;
+	int	tmp;
 
 	if (size <= 1)
 		return ;

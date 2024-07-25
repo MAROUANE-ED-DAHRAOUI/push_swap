@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: med-dahr <med-dahr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 01:04:00 by med-dahr          #+#    #+#             */
-/*   Updated: 2024/07/23 01:04:01 by med-dahr         ###   ########.fr       */
+/*   Created: 2024/07/24 15:57:51 by med-dahr          #+#    #+#             */
+/*   Updated: 2024/07/24 15:57:52 by med-dahr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <limits.h>
+# include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <unistd.h>
 
 typedef struct s_src
@@ -30,6 +32,7 @@ typedef struct s_src
 
 }			t_src;
 
+int			get_index(int *indx, int nbr, int size);
 int			is_valide_input(char **av, int ac);
 int			process_str(char *str);
 int			succes_args(char ch1, char ch2, char ch3);
@@ -54,7 +57,6 @@ int			min_num_pos(t_src *src, int size);
 void		free_all(t_src *src);
 void		push_all_to_stack_a(t_src *src);
 void		push(char *ptr, t_src *src);
-void		push_b(char *ptr, t_src *src);
 void		swap(int *arr, int size);
 void		rab(int *arr, int size, char *s2);
 void		rrab(int *arr, int size, char *s2);
